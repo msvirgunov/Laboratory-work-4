@@ -1,10 +1,10 @@
 -- Таблиця для зберігання даних користувачів
 CREATE TABLE visitors (
     user_id INTEGER PRIMARY KEY,
-    "name" VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
 
-    -- Обмеження CHECK з регулярним виразом для валідації формату email
+    -- Обмеження CHECK для валідації формату email
     CONSTRAINT email_format CHECK (
         email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
     )
@@ -17,7 +17,7 @@ CREATE TABLE literary_projects (
     title VARCHAR(255) NOT NULL,
     creation_date DATE NOT NULL DEFAULT CURRENT_DATE,
 
-    -- Обмеження CHECK з регулярним виразом, щоб назва не складалася лише з пробілів
+    -- Обмеження CHECK з регулярним виразом
     CONSTRAINT title_not_empty
         CHECK (title ~* '\S'),
 
@@ -30,7 +30,7 @@ CREATE TABLE chapters (
     chapter_id INTEGER PRIMARY KEY,
     project_id INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
-    "content" TEXT,
+    content TEXT,
 
     FOREIGN KEY (project_id) REFERENCES literary_projects (project_id)
 );
