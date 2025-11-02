@@ -1,6 +1,7 @@
 -- Таблиця для зберігання даних користувачів
 CREATE TABLE users (
     user_id INTEGER PRIMARY KEY,
+    -- 'name' перейменовано на 'user_name' щоб уникнути конфлікту ключових слів
     user_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
 
@@ -17,7 +18,6 @@ CREATE TABLE literary_projects (
     title VARCHAR(255) NOT NULL,
     creation_date DATE NOT NULL DEFAULT CURRENT_DATE,
 
-    -- Обмеження CHECK з регулярним виразом, щоб назва не складалася лише з пробілів
     CONSTRAINT title_not_empty
         CHECK (title ~* '\S'),
 
@@ -30,6 +30,7 @@ CREATE TABLE chapters (
     chapter_id INTEGER PRIMARY KEY,
     project_id INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
+    -- 'content' перейменовано на 'chapter_content' щоб уникнути конфлікту ключових слів
     chapter_content TEXT,
 
     FOREIGN KEY (project_id) REFERENCES literary_projects (project_id)
