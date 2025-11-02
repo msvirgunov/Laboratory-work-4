@@ -1,7 +1,7 @@
 -- Таблиця для зберігання даних користувачів
 CREATE TABLE users (
     user_id INTEGER PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
 
     -- Обмеження CHECK з регулярним виразом для валідації формату email
@@ -30,7 +30,7 @@ CREATE TABLE chapters (
     chapter_id INTEGER PRIMARY KEY,
     project_id INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
-    content TEXT,
+    chapter_content TEXT,
 
     FOREIGN KEY (project_id) REFERENCES literary_projects (project_id)
 );
