@@ -15,7 +15,7 @@ CREATE TABLE literary_projects (
     creation_date DATE NOT NULL DEFAULT CURRENT_DATE,
 
     CONSTRAINT title_not_empty
-        CHECK (title ~* '\S'),
+    CHECK (title ~* '\S'),
 
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
